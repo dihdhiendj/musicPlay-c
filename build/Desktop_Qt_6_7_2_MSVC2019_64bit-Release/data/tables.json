@@ -1,0 +1,29 @@
+{
+    "中文": {
+        "key": "播放次数",
+        "name": "中文",
+        "order": "降序",
+        "type": "master"
+    },
+    "急": {
+        "data": {
+            "music-0": "张惠妹 - 血腥爱情故事.mp3"
+        },
+        "key": "作者",
+        "name": "急",
+        "order": "降序",
+        "type": "user"
+    },
+    "纯音乐": {
+        "key": "作者",
+        "name": "纯音乐",
+        "order": "降序",
+        "type": "master"
+    },
+    "非中文": {
+        "key": "作者",
+        "name": "非中文",
+        "order": "降序",
+        "type": "master"
+    }
+}

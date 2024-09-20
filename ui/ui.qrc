@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>close.png</file>
+        <file>list.png</file>
+        <file>lrc.png</file>
+        <file>play.png</file>
+        <file>seit.png</file>
+        <file>value.png</file>
+        <file>stop.png</file>
+        <file>lock.png</file>
+        <file>left.png</file>
+        <file>right.png</file>
+        <file>dic.png</file>
+        <file>alone.png</file>
+    </qresource>
+</RCC>

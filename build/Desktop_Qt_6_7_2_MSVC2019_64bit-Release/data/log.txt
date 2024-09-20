@@ -1,0 +1,23 @@
+Thu Sep 19 21:23:30 2024   exe is runing
+Thu Sep 19 21:23:30 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/测试
+Thu Sep 19 21:23:30 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/中文
+Thu Sep 19 21:23:31 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/中文
+Thu Sep 19 21:23:31 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/纯音乐
+Thu Sep 19 21:23:31 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/纯音乐
+Thu Sep 19 21:23:31 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/非中文
+Thu Sep 19 21:23:31 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/非中文
+Thu Sep 19 21:23:31 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/测试
+Thu Sep 19 21:23:31 2024   中文
+Thu Sep 19 21:23:31 2024   急
+Thu Sep 19 21:23:31 2024   纯音乐
+Thu Sep 19 21:23:31 2024   非中文
+Thu Sep 19 21:23:31 2024   START, play music. url: C:/Users/18215/Music/测试/中文/张惠妹 - 血腥爱情故事.mp3
+Thu Sep 19 21:23:31 2024   C:/Users/18215/Music/测试/中文/张惠妹 - 血腥爱情故事.mp3 finish tables-building
+Thu Sep 19 21:23:31 2024   START, insert music lrc lines. url: C:/Users/18215/Music/测试/中文/张惠妹 - 血腥爱情故事.lrc
+Thu Sep 19 21:23:31 2024   OK, insert music lrc lines. url: C:/Users/18215/Music/测试/中文/张惠妹 - 血腥爱情故事.lrc
+Thu Sep 19 21:23:31 2024   OK, play music. url: C:/Users/18215/Music/测试/中文/张惠妹 - 血腥爱情故事.mp3
+Thu Sep 19 21:23:53 2024   START, play music. url: C:/Users/18215/Music/测试/中文/张信哲 - 信仰.flac
+Thu Sep 19 21:23:53 2024   C:/Users/18215/Music/测试/中文/张信哲 - 信仰.flac finish tables-building
+Thu Sep 19 21:23:53 2024   START, insert music lrc lines. url: C:/Users/18215/Music/测试/中文/张信哲 - 信仰.lrc
+Thu Sep 19 21:23:53 2024   OK, insert music lrc lines. url: C:/Users/18215/Music/测试/中文/张信哲 - 信仰.lrc
+Thu Sep 19 21:23:53 2024   OK, play music. url: C:/Users/18215/Music/测试/中文/张信哲 - 信仰.flac
