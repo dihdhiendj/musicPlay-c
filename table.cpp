@@ -175,3 +175,14 @@ void table::editHide()
 {
     ui->widget_edit->hide();
 }
+
+void table::on_pushButton_no_clicked()
+{
+    ui->widget_edit->hide();
+}
+
+void table::on_lineEdit_returnPressed()
+{
+    on_pushButton_search_clicked();
+}
+

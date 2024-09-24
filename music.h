@@ -1,7 +1,7 @@
 #ifndef MUSIC_H
 #define MUSIC_H
 
-#include <hard.h>
+#include <addlib.h>
 
 class music : public QLabel
 {
@@ -33,6 +33,8 @@ signals:
     void playMusic(int);
     //添加到列表
     void moveToTable(int);
+    //编辑歌词
+    void editLrc(QString);
 };
 
 class metadata : public QWidget

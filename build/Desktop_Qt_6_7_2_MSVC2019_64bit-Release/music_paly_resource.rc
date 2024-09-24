@@ -1,6 +1,6 @@
 #include <windows.h>
 
-IDI_ICON1	ICON	"C:\\Users\\18215\\Documents\\EX\\qt\\music_paly\\exe.ico"
+IDI_ICON1	ICON	"C:\\Users\\18215\\Documents\\EX\\qt\\music_paly\\new.ico"
 
 VS_VERSION_INFO VERSIONINFO
 	FILEVERSION 0,0,0,0

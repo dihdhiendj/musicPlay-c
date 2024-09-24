@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>765</width>
-    <height>196</height>
+    <width>568</width>
+    <height>110</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -17,22 +23,43 @@
    <string notr="true">#show{
 border-radius:15px;
 }
-QLabel{
-font: 40pt &quot;Microsoft YaHei UI&quot;;
-}
 #LrcShow{
 background-color: rgba(0,0,0,128); 
 }
 *{
 border: 0px；
+}
+QPushButton:hover
+{
+background-color: rgb(131, 197, 197);
+border-radius:5px;
+border:1px solid rgb(85, 255, 255);
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
-    <number>6</number>
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>90</number>
+   </property>
+   <property name="topMargin">
+    <number>30</number>
+   </property>
+   <property name="rightMargin">
+    <number>90</number>
+   </property>
+   <property name="bottomMargin">
+    <number>30</number>
    </property>
    <item>
     <widget class="QWidget" name="show" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="spacing">
        <number>0</number>
@@ -51,6 +78,12 @@ border: 0px；
       </property>
       <item>
        <widget class="QWidget" name="widget_tool" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="styleSheet">
          <string notr="true">#widget_tool{
 max-height:50px;
@@ -77,9 +110,12 @@ max-height:50px;
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>310</width>
+             <width>40</width>
              <height>20</height>
             </size>
            </property>
@@ -87,6 +123,12 @@ max-height:50px;
          </item>
          <item>
           <widget class="QWidget" name="widget_lock" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <property name="spacing">
              <number>10</number>
@@ -105,64 +147,81 @@ max-height:50px;
             </property>
             <item>
              <widget class="QPushButton" name="pushButton_up">
+              <property name="styleSheet">
+               <string notr="true">image: url(:/left.png);</string>
+              </property>
               <property name="text">
-               <string>Up</string>
+               <string/>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_stop">
+              <property name="styleSheet">
+               <string notr="true">image: url(:/stop.png);</string>
+              </property>
               <property name="text">
-               <string>Stop</string>
+               <string/>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_play">
+              <property name="styleSheet">
+               <string notr="true">image: url(:/play.png);</string>
+              </property>
               <property name="text">
-               <string>Play</string>
+               <string/>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_down">
+              <property name="styleSheet">
+               <string notr="true">image: url(:/right.png);</string>
+              </property>
               <property name="text">
-               <string>Down</string>
+               <string/>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_lock">
+              <property name="styleSheet">
+               <string notr="true">image: url(:/lock.png);</string>
+              </property>
               <property name="text">
-               <string>Lock</string>
+               <string/>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_seit">
-              <property name="text">
-               <string>Seit</string>
+              <property name="styleSheet">
+               <string notr="true">image: url(:/seit.png);</string>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_dic">
               <property name="text">
-               <string>dic</string>
+               <string/>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_alone">
+              <property name="styleSheet">
+               <string notr="true">image: url(:/alone.png);</string>
+              </property>
               <property name="text">
-               <string>alone</string>
+               <string/>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_hide">
+              <property name="styleSheet">
+               <string notr="true">image: url(:/lrc.png);</string>
+              </property>
               <property name="text">
-               <string>hide</string>
+               <string/>
               </property>
              </widget>
             </item>
@@ -171,8 +230,11 @@ max-height:50px;
          </item>
          <item>
           <widget class="QPushButton" name="pushButton_unlock">
+           <property name="styleSheet">
+            <string notr="true">image: url(:/lock.png);</string>
+           </property>
            <property name="text">
-            <string>Unlock</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -181,119 +243,8 @@ max-height:50px;
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>310</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QWidget" name="widget_main" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_level" native="true">
-           <layout class="QVBoxLayout" name="verticalLayout_3">
-            <item>
-             <widget class="QLabel" name="labelNow">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(255, 0, 0);</string>
-              </property>
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="labelDown">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 255, 255);</string>
-              </property>
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="widget_erect" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
-            <item>
-             <widget class="QLabel" name="labelNow_2">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(255, 0, 0);</string>
-              </property>
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="labelDown_2">
-              <property name="styleSheet">
-               <string notr="true">color: rgb(0, 255, 255);</string>
-              </property>
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -309,8 +260,80 @@ max-height:50px;
      </layout>
     </widget>
    </item>
+   <item>
+    <widget class="QWidget" name="widget_level" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="lrc_line" name="labelNow">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="lrc_line" name="labelDown">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(0, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>lrc_line</class>
+   <extends>QLabel</extends>
+   <header location="global">lrcshow.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

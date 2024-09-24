@@ -1,23 +1,37 @@
-Thu Sep 19 21:23:30 2024   exe is runing
-Thu Sep 19 21:23:30 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/测试
-Thu Sep 19 21:23:30 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/中文
-Thu Sep 19 21:23:31 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/中文
-Thu Sep 19 21:23:31 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/纯音乐
-Thu Sep 19 21:23:31 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/纯音乐
-Thu Sep 19 21:23:31 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/非中文
-Thu Sep 19 21:23:31 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/测试/非中文
-Thu Sep 19 21:23:31 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/测试
-Thu Sep 19 21:23:31 2024   中文
-Thu Sep 19 21:23:31 2024   急
-Thu Sep 19 21:23:31 2024   纯音乐
-Thu Sep 19 21:23:31 2024   非中文
-Thu Sep 19 21:23:31 2024   START, play music. url: C:/Users/18215/Music/测试/中文/张惠妹 - 血腥爱情故事.mp3
-Thu Sep 19 21:23:31 2024   C:/Users/18215/Music/测试/中文/张惠妹 - 血腥爱情故事.mp3 finish tables-building
-Thu Sep 19 21:23:31 2024   START, insert music lrc lines. url: C:/Users/18215/Music/测试/中文/张惠妹 - 血腥爱情故事.lrc
-Thu Sep 19 21:23:31 2024   OK, insert music lrc lines. url: C:/Users/18215/Music/测试/中文/张惠妹 - 血腥爱情故事.lrc
-Thu Sep 19 21:23:31 2024   OK, play music. url: C:/Users/18215/Music/测试/中文/张惠妹 - 血腥爱情故事.mp3
-Thu Sep 19 21:23:53 2024   START, play music. url: C:/Users/18215/Music/测试/中文/张信哲 - 信仰.flac
-Thu Sep 19 21:23:53 2024   C:/Users/18215/Music/测试/中文/张信哲 - 信仰.flac finish tables-building
-Thu Sep 19 21:23:53 2024   START, insert music lrc lines. url: C:/Users/18215/Music/测试/中文/张信哲 - 信仰.lrc
-Thu Sep 19 21:23:53 2024   OK, insert music lrc lines. url: C:/Users/18215/Music/测试/中文/张信哲 - 信仰.lrc
-Thu Sep 19 21:23:53 2024   OK, play music. url: C:/Users/18215/Music/测试/中文/张信哲 - 信仰.flac
+Tue Sep 24 16:02:04 2024   exe is runing
+Tue Sep 24 16:02:05 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/音乐
+Tue Sep 24 16:02:05 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/音乐/中文
+Tue Sep 24 16:02:06 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/音乐/中文
+Tue Sep 24 16:02:06 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/音乐/纯音乐
+Tue Sep 24 16:02:06 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/音乐/纯音乐
+Tue Sep 24 16:02:06 2024   START, go through all the songs in the folder. dir: C:/Users/18215/Music/音乐/非中文
+Tue Sep 24 16:02:06 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/音乐/非中文
+Tue Sep 24 16:02:06 2024   OK, go through all the songs in the folder. dir: C:/Users/18215/Music/音乐
+Tue Sep 24 16:02:06 2024   中文
+Tue Sep 24 16:02:06 2024   纯音乐
+Tue Sep 24 16:02:06 2024   非中文
+Tue Sep 24 16:02:06 2024   START, play music. url: C:/Users/18215/Music/音乐/中文/许嵩 - 雨幕.mp3
+Tue Sep 24 16:02:06 2024   C:/Users/18215/Music/音乐/中文/许嵩 - 雨幕.mp3 finish tables-building
+Tue Sep 24 16:02:06 2024   START, insert music lrc lines. url: C:/Users/18215/Music/音乐/中文/许嵩 - 雨幕.lrc
+Tue Sep 24 16:02:06 2024   OK, insert music lrc lines. url: C:/Users/18215/Music/音乐/中文/许嵩 - 雨幕.lrc
+Tue Sep 24 16:02:06 2024   OK, play music. url: C:/Users/18215/Music/音乐/中文/许嵩 - 雨幕.mp3
+Tue Sep 24 16:02:24 2024   START, play music. url: C:/Users/18215/Music/音乐/中文/红昭愿-音阙诗听.mp3
+Tue Sep 24 16:02:24 2024   C:/Users/18215/Music/音乐/中文/红昭愿-音阙诗听.mp3 finish tables-building
+Tue Sep 24 16:02:27 2024   START, insert music lrc lines. url: C:/Users/18215/Music/音乐/中文/红昭愿-音阙诗听.lrc
+Tue Sep 24 16:02:27 2024   OK, insert music lrc lines. url: C:/Users/18215/Music/音乐/中文/红昭愿-音阙诗听.lrc
+Tue Sep 24 16:02:27 2024   OK, play music. url: C:/Users/18215/Music/音乐/中文/红昭愿-音阙诗听.mp3
+Tue Sep 24 16:04:43 2024   START, play music. url: C:/Users/18215/Music/音乐/中文/耍把戏-张东尼.mp3
+Tue Sep 24 16:04:43 2024   C:/Users/18215/Music/音乐/中文/耍把戏-张东尼.mp3 finish tables-building
+Tue Sep 24 16:04:44 2024   START, insert music lrc lines. url: C:/Users/18215/Music/音乐/中文/耍把戏-张东尼.lrc
+Tue Sep 24 16:04:44 2024   OK, insert music lrc lines. url: C:/Users/18215/Music/音乐/中文/耍把戏-张东尼.lrc
+Tue Sep 24 16:04:44 2024   OK, play music. url: C:/Users/18215/Music/音乐/中文/耍把戏-张东尼.mp3
+Tue Sep 24 16:06:23 2024   START, play music. url: C:/Users/18215/Music/音乐/中文/不问别离-指尖笑.mp3
+Tue Sep 24 16:06:23 2024   C:/Users/18215/Music/音乐/中文/不问别离-指尖笑.mp3 finish tables-building
+Tue Sep 24 16:06:25 2024   START, insert music lrc lines. url: C:/Users/18215/Music/音乐/中文/不问别离-指尖笑.lrc
+Tue Sep 24 16:06:25 2024   OK, insert music lrc lines. url: C:/Users/18215/Music/音乐/中文/不问别离-指尖笑.lrc
+Tue Sep 24 16:06:25 2024   OK, play music. url: C:/Users/18215/Music/音乐/中文/不问别离-指尖笑.mp3
+Tue Sep 24 16:10:18 2024   START, play music. url: C:/Users/18215/Music/音乐/中文/身骑白马-徐佳莹.mp3
+Tue Sep 24 16:10:18 2024   C:/Users/18215/Music/音乐/中文/身骑白马-徐佳莹.mp3 finish tables-building
+Tue Sep 24 16:10:19 2024   START, insert music lrc lines. url: C:/Users/18215/Music/音乐/中文/身骑白马-徐佳莹.lrc
+Tue Sep 24 16:10:19 2024   OK, insert music lrc lines. url: C:/Users/18215/Music/音乐/中文/身骑白马-徐佳莹.lrc
+Tue Sep 24 16:10:19 2024   OK, play music. url: C:/Users/18215/Music/音乐/中文/身骑白马-徐佳莹.mp3

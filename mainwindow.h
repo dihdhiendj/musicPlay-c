@@ -1,39 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <hard.h>
+#include <addlib.h>
 #include <seit.h>
 #include <list.h>
 #include <lrcshow.h>
 
 QT_BEGIN_NAMESPACE
-
-//歌词行
-class lrc_line : public QLabel
-{
-    Q_OBJECT
-
-public:
-    lrc_line();
-    bool isIn = false;
-    //时间
-    int time;
-    //重写鼠标事件
-    void mousePressEvent(QMouseEvent *event) override;
-    //重写事件过滤器
-    bool eventFilter(QObject *target, QEvent *event) override;
-
-    //选中
-    void selecing();
-    //正在播放
-    void playing();
-    //恢复
-    void back();
-
-signals:
-    //跳转时间
-    void turn_time(int);
-};
 
 namespace Ui {
 class MainWindow;
@@ -45,19 +18,62 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    QPoint my_pos;
+    //重要控件
+    //设置
+    seit *my_seit = new seit;
+    //列表
+    list *my_list = new list;
+    //桌面歌词
+    LrcShow *my_lrc = new LrcShow;
+    //后台小程序
+    QSystemTrayIcon *trayIcon = new QSystemTrayIcon(this);
+    QImage* cover = new QImage;
+    double r = 0.5;
 
-    //正在播放
+    //移动，拉伸
+    QPoint my_pos;
+    bool isMove = false;
+    QString dic = "";
+
+    //正在播放,加载歌曲
     bool isFrist = true;
-    //是否在歌词里
+    //聚焦歌词
     bool posIsLrc = false;
     //播放进度
     int nowPlayPace = 0;
-    //歌词
+    //歌词列表
     QList <lrc_line*>lrc;
+
+    //para
+    QColor play_color ,next_color;
+
+    QFont lrc_font;
+    int* font_size = &my_seit->mainLrc_font_size;
+
+    //在线服务
+    bool *isOnlineLrc = &my_seit->isOnlineLrc,*isOnlineCover = &my_seit->isOnlineCover;
+
+    //托盘菜单
+    Menu* trayIconMenu = new Menu;
+
 
     //重写事件过滤器
     bool eventFilter(QObject *target, QEvent *event) override;
+
+    //鼠标按下
+    void mousePressEvent(QMouseEvent* event)override;
+    //鼠标移动
+    void mouseMoveEvent(QMouseEvent* event)override;
+    //鼠标释放
+    void mouseReleaseEvent(QMouseEvent *event) override;
+    void updateRegion(QMouseEvent *event);
+    void resizeRegion(QMouseEvent *event);
+
+    //重写关闭事件
+    void closeEvent(QCloseEvent *event) override;
+    //重写隐藏事件
+    void hideEvent(QHideEvent *event) override;
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -65,13 +81,6 @@ public:
     void open_getPy(QString song,QString sing,QString baseName,QString aimDir);
     //获取封面
     void open_get_coverPy(QString song,QString sing,QString baseName,QString aimDir);
-
-    //设置
-    seit *my_seit = new seit;
-    //列表
-    list *my_list = new list;
-    //桌面歌词
-    LrcShow *my_lrc = new LrcShow;
 
 private slots:
     //暂停、继续
@@ -89,7 +98,15 @@ private slots:
     void on_pushButton_play_clicked();
     //音量改变
     void on_horizontalSlider_volume_valueChanged(int value);
+    //禁音
+    void on_pushButton_value_clicked();
 
+    void on_pushButton_max_clicked();
+    void on_pushButton_min_clicked();
+
+    void on_pushButton_mainShow_clicked();
+
+private:
     //播放音乐
     void open_music(musicCore* parameter);
 
@@ -101,40 +118,38 @@ private slots:
     //更新结束时间
     void insert_end_time(qint64 time);
     //设置播放位置
-    void seit_play_value(int pos);
+    void seit_play_value(qint64 pos);
 
     //生成歌词
     void build_lyric_show(QString url);
     //选中歌词
-    void select_lrc(int time);
+    void select_lrc(qint64 time);
     //清空之前的歌词
     void clear_lyric_show();
+    //设置歌词样式
+    void set_lrcStyle(QColor play,QColor next ,QFont f);
 
     //写入播放数据
     void writer_data();
     //读取播放数据
     void read_data();
 
-    //鼠标按下
-    void mousePressEvent(QMouseEvent* event)override;
-    //鼠标移动
-    void mouseMoveEvent(QMouseEvent* event)override;
-
     //设置背景
     void set_bakcgroung_pic(QImage *img);
-
-    void on_pushButton_value_clicked();
-
-    //设置字体
-    void set_font_type(QString f);
-
-    void on_pushButton_min_clicked();
 
     //更新播放设备
     void updateAudioDevice();
 
     //置空播放
     void set_void_play();
+
+    //处理托盘事件
+    void do_systemTrayIcon_active(QSystemTrayIcon::ActivationReason reason);
+    //预处理托盘菜单
+    void buildTrayIconMenu();
+
+    //旋转封面
+    void transform_cover();
 
 private:
     Ui::MainWindow *ui;

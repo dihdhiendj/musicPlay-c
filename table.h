@@ -1,7 +1,7 @@
 #ifndef TABLE_H
 #define TABLE_H
 
-#include <hard.h>
+#include <addlib.h>
 #include <music.h>
 
 namespace Ui {
@@ -50,6 +50,8 @@ private slots:
     void on_comboBox_forward_currentTextChanged(const QString &arg1);
 
     void on_pushButton_yes_clicked();
+    void on_pushButton_no_clicked();
+    void on_lineEdit_returnPressed();
 };
 
 #endif // TABLE_H

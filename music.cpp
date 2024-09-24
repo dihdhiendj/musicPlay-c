@@ -10,24 +10,33 @@ music::music() {
 //右键菜单
 void music::contextMenuEvent(QContextMenuEvent* event)
 {
-    QMenu menu(this);
+    Menu* menu = new Menu;
 
-    QAction* edit = new QAction("编辑标签");
-    menu.addAction(edit);
-    connect(edit,&QAction::triggered,this,&music::editMetadata);
-
-    QAction* move = new QAction("添加到列表");
-    menu.addAction(move);
-    connect(move,&QAction::triggered,this,[=]()
+    QPushButton* move = new QPushButton("添加到列表");
+    menu->addPushButton(move,":/move.png");
+    connect(move,&QPushButton::clicked,this,[=]()
             {
                 emit moveToTable(core->number);
             });
 
-    QAction* remove = new QAction("从当前菜单移除");
-    menu.addAction(remove);
-    connect(remove,&QAction::triggered,this,&music::remove);
+    QPushButton* remove = new QPushButton("从当前菜单移除");
+    menu->addPushButton(remove,":/close.png");
+    connect(remove,&QPushButton::clicked,this,&music::remove);
 
-    menu.exec(QCursor::pos());
+    menu->addSpacer();
+
+    QPushButton* edit = new QPushButton("编辑标签");
+    menu->addPushButton(edit);
+    connect(edit,&QPushButton::clicked,this,&music::editMetadata);
+
+    QPushButton* Lrc = new QPushButton("编辑歌词");
+    menu->addPushButton(Lrc);
+    connect(Lrc,&QPushButton::clicked,this,[=]()
+            {
+                emit editLrc(core->path +"/" + core->baseName + ".lrc");
+            });
+
+    menu->exec(QCursor::pos());
     event->accept();
 }
 
@@ -98,7 +107,7 @@ metadata::metadata()
     this->setLayout(layout);
     this->setWindowTitle("编辑");
     this->setMinimumWidth(300);
-    connect(yes,&QPushButton::pressed,this,&metadata::editFile);
+    connect(yes,&QPushButton::clicked,this,&metadata::editFile);
 }
 
 void metadata::fromMap(QMap<QString,QString> map)

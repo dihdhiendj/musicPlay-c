@@ -2,7 +2,7 @@
 #include "ui_seit.h"
 
 seit::seit(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent, Qt::WindowStaysOnTopHint)
     , ui(new Ui::seit)
 {
     this->setAttribute(Qt::WA_TranslucentBackground);//设置窗口背景透明
@@ -53,12 +53,21 @@ void seit::write_data()
     ini->beginGroup("seit");
 
     ini->setValue("music_url",sourceList);
-    ini->setValue("font_type",font_type);
 
-    ini->setValue("lrc_fontType",lrc_fontType);
-    ini->setValue("lrc_upColor",lrc_upColor);
-    ini->setValue("lrc_downColor",lrc_downColor);
-    ini->setValue("lrc_fontSize",lrc_fontSize);
+    ini->setValue("lrc_font_family",lrc_font.family());
+    ini->setValue("lrc_font_pointSize",lrc_font.pointSize());
+    ini->setValue("mainLrc_font_pointSize",mainLrc_font_size);
+
+    ini->setValue("playLrc_red",playLrc_color.red());
+    ini->setValue("playLrc_green",playLrc_color.green());
+    ini->setValue("playLrc_blue",playLrc_color.blue());
+
+    ini->setValue("nextLrc_red",nextLrc_color.red());
+    ini->setValue("nextLrc_green",nextLrc_color.green());
+    ini->setValue("nextLrc_blue",nextLrc_color.blue());
+
+    ini->setValue("isOnlineCover",isOnlineCover);
+    ini->setValue("isOnlineLrc",isOnlineLrc);
 
     ini->endGroup();
     ini->sync();
@@ -77,22 +86,26 @@ void seit::read_data()
         emit build_dir(sourceList[i]);
     }
 
-    font_type = ini->value("font_type").toString();
-    if(font_type.isNull())
-    {
-        font_type = "华文仿宋";
-    }
-    ui->fontComboBox_seit->setCurrentText(font_type);
-    set_font_type(font_type);
+    lrc_font.setFamily(ini->value("lrc_font_family").toString());
+    lrc_font.setPointSize(ini->value("lrc_font_pointSize").toInt());
+    ui->fontComboBox_lrc->setCurrentFont(lrc_font);
 
-    lrc_fontType = ini->value("lrc_fontType").toString();
-    ui->fontComboBox_lrc->setCurrentText(lrc_fontType);
-    lrc_upColor = ini->value("lrc_upColor").toString();
-    ui->pushButton_nowLrc->setStyleSheet("QPushButton { background-color: " + lrc_upColor + "; }");
-    lrc_downColor = ini->value("lrc_downColor").toString();
-    ui->pushButton_downLrc->setStyleSheet("QPushButton { background-color: " + lrc_downColor + "; }");
-    lrc_fontSize = ini->value("lrc_fontSize").toInt();
+    mainLrc_font_size = ini->value("mainLrc_font_pointSize").toInt();
+
+    playLrc_color.setRed(ini->value("playLrc_red").toInt());
+    playLrc_color.setGreen(ini->value("playLrc_green").toInt());
+    playLrc_color.setBlue(ini->value("playLrc_blue").toInt());
+
+
+    nextLrc_color.setRed(ini->value("nextLrc_red").toInt());
+    nextLrc_color.setGreen(ini->value("nextLrc_green").toInt());
+    nextLrc_color.setBlue(ini->value("nextLrc_blue").toInt());
     build_lrcStyle();
+
+    isOnlineCover = ini->value("isOnlineCover").toBool();
+    ui->checkBox_downCover->setChecked(isOnlineCover);
+    isOnlineLrc = ini->value("isOnlineLrc").toBool();
+    ui->checkBox_downLrc->setChecked(isOnlineLrc);
 
     ini->endGroup();
     noFirst = true;
@@ -110,63 +123,60 @@ void seit::on_pushButton_add_dir_clicked()
     emit build_dir(aim_dir);
 }
 
-//设置字体
-void seit::set_font_type(QString f)
-{
-    ui->widget_show->setStyleSheet(
-        "*{font:12pt \""+f
-        +"\";border:0px;color: rgb(255, 255, 255);background-color: transparent;}"
-          "*:hover{color: rgb(0, 170, 255);}"
-          "#widget_show{background-color: rgba(0,0,0,128);}"
-          "QLabel{border-bottom:1px solid rgb(198, 198, 198);min-height:40px;}"
-          "QLineEdit{border-bottom:1px solid rgb(198, 198, 198);min-height:40px;}"
-          "QComboBox{min-height:40px;}"
-          "QComboBox QAbstractItemView {background-color: rgb(0, 0, 0);}"
-          "QMenu{background-color: rgba(0,0,0,128);}");
-    emit seit_type(f);
-}
-
 void seit::on_pushButton_nowLrc_clicked()
 {
     QColor color = QColorDialog::getColor(Qt::red, this, "Choose a color");
-    if (color.isValid()) {
+    if(color.isValid())
+    {
         // 使用选择的颜色，例如，设置按钮的背景色
         ui->pushButton_nowLrc->setStyleSheet("QPushButton { background-color: " + color.name() + "; }");
     }
-    lrc_upColor = color.name();
+    playLrc_color = color;
     build_lrcStyle();
 }
 
 void seit::on_pushButton_downLrc_clicked()
 {
     QColor color = QColorDialog::getColor(Qt::red, this, "Choose a color");
-    if (color.isValid()) {
+    if(color.isValid())
+    {
         // 使用选择的颜色，例如，设置按钮的背景色
         ui->pushButton_downLrc->setStyleSheet("QPushButton { background-color: " + color.name() + "; }");
     }
-    lrc_downColor = color.name();
+    nextLrc_color = color.name();
     build_lrcStyle();
+}
+
+//设置lrcShow font
+void seit::next_Font_size(int isAdd)
+{
+    int i = lrc_font.pointSize() + isAdd;
+    if(i > 0)
+    {
+        ui->label_lrcShow_fontSize->setText(QString::number(i));
+        lrc_font.setPointSize(i);
+        build_lrcStyle();
+    }
 }
 
 void seit::on_pushButton_sizeDown_clicked()
 {
-    lrc_fontSize--;
-    build_lrcStyle();
+    next_Font_size(-1);
 }
+
 
 void seit::on_pushButton_sizeUp_clicked()
 {
-    lrc_fontSize++;
-    build_lrcStyle();
+    next_Font_size(1);
 }
+
 
 //执行数据
 void seit::build_lrcStyle()
 {
-    QString now = "*{font:" + QString::number(lrc_fontSize) + "pt \"" + lrc_fontType + "\";color: "+ lrc_upColor +";}";
-    QString down = "*{font:" + QString::number(lrc_fontSize) + "pt \"" + lrc_fontType + "\";color: "+ lrc_downColor +";}";
-    emit giveLrcStyle(now,down);
+    emit giveLrcStyle(playLrc_color,nextLrc_color,lrc_font);
 }
+
 
 void seit::on_pushButton_delete_dir_clicked()
 {
@@ -181,21 +191,36 @@ void seit::on_pushButton_delete_dir_clicked()
     ui->comboBox_all_url->removeItem(ui->comboBox_all_url->currentIndex());
 }
 
-void seit::on_fontComboBox_seit_currentTextChanged(const QString &arg1)
+
+void seit::on_fontComboBox_lrc_currentFontChanged(const QFont &f)
 {
-    if(noFirst)
-    {
-        font_type = arg1;
-        set_font_type(arg1);
-    }
+    lrc_font.setFamily(f.family());
+    build_lrcStyle();
 }
 
-void seit::on_fontComboBox_lrc_currentTextChanged(const QString &arg1)
+
+void seit::on_pushButton_lrc_sizeAdd_clicked()
 {
-    if(noFirst)
-    {
-        lrc_fontType = arg1;
-        build_lrcStyle();
-    }
+    mainLrc_font_size++;
+    build_lrcStyle();
+}
+
+
+void seit::on_pushButton_lrc_sizeDecrease_clicked()
+{
+    mainLrc_font_size--;
+    build_lrcStyle();
+}
+
+
+void seit::on_checkBox_downLrc_stateChanged(int arg1)
+{
+    isOnlineLrc = arg1;
+}
+
+
+void seit::on_checkBox_downCover_stateChanged(int arg1)
+{
+    isOnlineCover = arg1;
 }
 

@@ -92,3 +92,33 @@ void log::write(QString txt)
     }
 }
 
+Menu::Menu(QWidget *parent)
+    :QMenu(parent)
+{
+    this->setStyleSheet("*{color: rgb(255, 255, 255);background-color: rgb(0, 0, 0);font: 12pt \"华文仿宋\";}"
+                        "*:hover{color: rgb(11, 255, 218);}"
+                        "QPushButton{text-align : left;}"
+                        "QFrame{min-height:1px;max-height:1px;background-color: rgb(255, 255, 255);min-width:150px;}");
+    this->setLayout(layout);
+    layout->setContentsMargins(10,5,30,5);
+}
+
+void Menu::addPushButton(QPushButton* button,QString icon)
+{
+    QPushButton* show = new QPushButton;
+    show->setStyleSheet("*{max-width:20px;}");
+    connect(button,&QPushButton::clicked,this,&Menu::close);
+    show->setIcon(QIcon(icon));
+
+    layout->addWidget(show,buttons,0);
+    layout->addWidget(button,buttons,1);
+    buttons++;
+}
+
+//插入分割线
+void Menu::addSpacer()
+{
+    QFrame* frame = new QFrame;
+    layout->addWidget(frame,buttons,1);
+    buttons++;
+}

@@ -12,11 +12,11 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <lrcshow.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -37,52 +37,56 @@ public:
     QPushButton *pushButton_down;
     QPushButton *pushButton_lock;
     QPushButton *pushButton_seit;
-    QPushButton *pushButton_dic;
     QPushButton *pushButton_alone;
     QPushButton *pushButton_hide;
     QPushButton *pushButton_unlock;
     QSpacerItem *horizontalSpacer_2;
-    QWidget *widget_main;
-    QHBoxLayout *horizontalLayout_3;
-    QSpacerItem *horizontalSpacer_3;
     QWidget *widget_level;
     QVBoxLayout *verticalLayout_3;
-    QLabel *labelNow;
-    QLabel *labelDown;
-    QWidget *widget_erect;
-    QHBoxLayout *horizontalLayout_4;
-    QLabel *labelNow_2;
-    QLabel *labelDown_2;
-    QSpacerItem *horizontalSpacer_4;
+    lrc_line *labelNow;
+    lrc_line *labelDown;
 
     void setupUi(QWidget *LrcShow)
     {
         if (LrcShow->objectName().isEmpty())
             LrcShow->setObjectName("LrcShow");
-        LrcShow->resize(765, 196);
+        LrcShow->resize(568, 110);
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(LrcShow->sizePolicy().hasHeightForWidth());
+        LrcShow->setSizePolicy(sizePolicy);
         LrcShow->setStyleSheet(QString::fromUtf8("#show{\n"
 "border-radius:15px;\n"
-"}\n"
-"QLabel{\n"
-"font: 40pt \"Microsoft YaHei UI\";\n"
 "}\n"
 "#LrcShow{\n"
 "background-color: rgba(0,0,0,128); \n"
 "}\n"
 "*{\n"
 "border: 0px\357\274\233\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color: rgb(131, 197, 197);\n"
+"border-radius:5px;\n"
+"border:1px solid rgb(85, 255, 255);\n"
 "}"));
         verticalLayout = new QVBoxLayout(LrcShow);
-        verticalLayout->setSpacing(6);
+        verticalLayout->setSpacing(0);
         verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(90, 30, 90, 30);
         show = new QWidget(LrcShow);
         show->setObjectName("show");
+        sizePolicy.setHeightForWidth(show->sizePolicy().hasHeightForWidth());
+        show->setSizePolicy(sizePolicy);
         verticalLayout_2 = new QVBoxLayout(show);
         verticalLayout_2->setSpacing(0);
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         widget_tool = new QWidget(show);
         widget_tool->setObjectName("widget_tool");
+        sizePolicy.setHeightForWidth(widget_tool->sizePolicy().hasHeightForWidth());
+        widget_tool->setSizePolicy(sizePolicy);
         widget_tool->setStyleSheet(QString::fromUtf8("#widget_tool{\n"
 "max-height:50px;\n"
 "}"));
@@ -90,58 +94,66 @@ public:
         horizontalLayout->setSpacing(10);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer = new QSpacerItem(310, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
         widget_lock = new QWidget(widget_tool);
         widget_lock->setObjectName("widget_lock");
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Minimum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(widget_lock->sizePolicy().hasHeightForWidth());
+        widget_lock->setSizePolicy(sizePolicy1);
         horizontalLayout_2 = new QHBoxLayout(widget_lock);
         horizontalLayout_2->setSpacing(10);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         pushButton_up = new QPushButton(widget_lock);
         pushButton_up->setObjectName("pushButton_up");
+        pushButton_up->setStyleSheet(QString::fromUtf8("image: url(:/left.png);"));
 
         horizontalLayout_2->addWidget(pushButton_up);
 
         pushButton_stop = new QPushButton(widget_lock);
         pushButton_stop->setObjectName("pushButton_stop");
+        pushButton_stop->setStyleSheet(QString::fromUtf8("image: url(:/stop.png);"));
 
         horizontalLayout_2->addWidget(pushButton_stop);
 
         pushButton_play = new QPushButton(widget_lock);
         pushButton_play->setObjectName("pushButton_play");
+        pushButton_play->setStyleSheet(QString::fromUtf8("image: url(:/play.png);"));
 
         horizontalLayout_2->addWidget(pushButton_play);
 
         pushButton_down = new QPushButton(widget_lock);
         pushButton_down->setObjectName("pushButton_down");
+        pushButton_down->setStyleSheet(QString::fromUtf8("image: url(:/right.png);"));
 
         horizontalLayout_2->addWidget(pushButton_down);
 
         pushButton_lock = new QPushButton(widget_lock);
         pushButton_lock->setObjectName("pushButton_lock");
+        pushButton_lock->setStyleSheet(QString::fromUtf8("image: url(:/lock.png);"));
 
         horizontalLayout_2->addWidget(pushButton_lock);
 
         pushButton_seit = new QPushButton(widget_lock);
         pushButton_seit->setObjectName("pushButton_seit");
+        pushButton_seit->setStyleSheet(QString::fromUtf8("image: url(:/seit.png);"));
 
         horizontalLayout_2->addWidget(pushButton_seit);
 
-        pushButton_dic = new QPushButton(widget_lock);
-        pushButton_dic->setObjectName("pushButton_dic");
-
-        horizontalLayout_2->addWidget(pushButton_dic);
-
         pushButton_alone = new QPushButton(widget_lock);
         pushButton_alone->setObjectName("pushButton_alone");
+        pushButton_alone->setStyleSheet(QString::fromUtf8("image: url(:/alone.png);"));
 
         horizontalLayout_2->addWidget(pushButton_alone);
 
         pushButton_hide = new QPushButton(widget_lock);
         pushButton_hide->setObjectName("pushButton_hide");
+        pushButton_hide->setStyleSheet(QString::fromUtf8("image: url(:/lrc.png);"));
 
         horizontalLayout_2->addWidget(pushButton_hide);
 
@@ -150,78 +162,54 @@ public:
 
         pushButton_unlock = new QPushButton(widget_tool);
         pushButton_unlock->setObjectName("pushButton_unlock");
+        pushButton_unlock->setStyleSheet(QString::fromUtf8("image: url(:/lock.png);"));
 
         horizontalLayout->addWidget(pushButton_unlock);
 
-        horizontalSpacer_2 = new QSpacerItem(310, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
 
         verticalLayout_2->addWidget(widget_tool);
 
-        widget_main = new QWidget(show);
-        widget_main->setObjectName("widget_main");
-        horizontalLayout_3 = new QHBoxLayout(widget_main);
-        horizontalLayout_3->setSpacing(0);
-        horizontalLayout_3->setObjectName("horizontalLayout_3");
-        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
-        horizontalLayout_3->addItem(horizontalSpacer_3);
+        verticalLayout->addWidget(show);
 
-        widget_level = new QWidget(widget_main);
+        widget_level = new QWidget(LrcShow);
         widget_level->setObjectName("widget_level");
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(widget_level->sizePolicy().hasHeightForWidth());
+        widget_level->setSizePolicy(sizePolicy2);
         verticalLayout_3 = new QVBoxLayout(widget_level);
+        verticalLayout_3->setSpacing(0);
         verticalLayout_3->setObjectName("verticalLayout_3");
-        labelNow = new QLabel(widget_level);
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        labelNow = new lrc_line(widget_level);
         labelNow->setObjectName("labelNow");
+        sizePolicy.setHeightForWidth(labelNow->sizePolicy().hasHeightForWidth());
+        labelNow->setSizePolicy(sizePolicy);
         labelNow->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
         labelNow->setAlignment(Qt::AlignCenter);
 
         verticalLayout_3->addWidget(labelNow);
 
-        labelDown = new QLabel(widget_level);
+        labelDown = new lrc_line(widget_level);
         labelDown->setObjectName("labelDown");
+        QSizePolicy sizePolicy3(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Minimum);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(labelDown->sizePolicy().hasHeightForWidth());
+        labelDown->setSizePolicy(sizePolicy3);
         labelDown->setStyleSheet(QString::fromUtf8("color: rgb(0, 255, 255);"));
         labelDown->setAlignment(Qt::AlignCenter);
 
         verticalLayout_3->addWidget(labelDown);
 
 
-        horizontalLayout_3->addWidget(widget_level);
-
-        widget_erect = new QWidget(widget_main);
-        widget_erect->setObjectName("widget_erect");
-        horizontalLayout_4 = new QHBoxLayout(widget_erect);
-        horizontalLayout_4->setObjectName("horizontalLayout_4");
-        labelNow_2 = new QLabel(widget_erect);
-        labelNow_2->setObjectName("labelNow_2");
-        labelNow_2->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
-        labelNow_2->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_4->addWidget(labelNow_2);
-
-        labelDown_2 = new QLabel(widget_erect);
-        labelDown_2->setObjectName("labelDown_2");
-        labelDown_2->setStyleSheet(QString::fromUtf8("color: rgb(0, 255, 255);"));
-        labelDown_2->setAlignment(Qt::AlignCenter);
-        labelDown_2->setWordWrap(true);
-
-        horizontalLayout_4->addWidget(labelDown_2);
-
-
-        horizontalLayout_3->addWidget(widget_erect);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer_4);
-
-
-        verticalLayout_2->addWidget(widget_main);
-
-
-        verticalLayout->addWidget(show);
+        verticalLayout->addWidget(widget_level);
 
 
         retranslateUi(LrcShow);
@@ -232,20 +220,17 @@ public:
     void retranslateUi(QWidget *LrcShow)
     {
         LrcShow->setWindowTitle(QCoreApplication::translate("LrcShow", "Form", nullptr));
-        pushButton_up->setText(QCoreApplication::translate("LrcShow", "Up", nullptr));
-        pushButton_stop->setText(QCoreApplication::translate("LrcShow", "Stop", nullptr));
-        pushButton_play->setText(QCoreApplication::translate("LrcShow", "Play", nullptr));
-        pushButton_down->setText(QCoreApplication::translate("LrcShow", "Down", nullptr));
-        pushButton_lock->setText(QCoreApplication::translate("LrcShow", "Lock", nullptr));
-        pushButton_seit->setText(QCoreApplication::translate("LrcShow", "Seit", nullptr));
-        pushButton_dic->setText(QCoreApplication::translate("LrcShow", "dic", nullptr));
-        pushButton_alone->setText(QCoreApplication::translate("LrcShow", "alone", nullptr));
-        pushButton_hide->setText(QCoreApplication::translate("LrcShow", "hide", nullptr));
-        pushButton_unlock->setText(QCoreApplication::translate("LrcShow", "Unlock", nullptr));
+        pushButton_up->setText(QString());
+        pushButton_stop->setText(QString());
+        pushButton_play->setText(QString());
+        pushButton_down->setText(QString());
+        pushButton_lock->setText(QString());
+        pushButton_seit->setText(QString());
+        pushButton_alone->setText(QString());
+        pushButton_hide->setText(QString());
+        pushButton_unlock->setText(QString());
         labelNow->setText(QCoreApplication::translate("LrcShow", "TextLabel", nullptr));
         labelDown->setText(QCoreApplication::translate("LrcShow", "TextLabel", nullptr));
-        labelNow_2->setText(QCoreApplication::translate("LrcShow", "TextLabel", nullptr));
-        labelDown_2->setText(QCoreApplication::translate("LrcShow", "TextLabel", nullptr));
     } // retranslateUi
 
 };

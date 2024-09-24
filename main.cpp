@@ -2,7 +2,7 @@
 
 #include <QApplication>
 
-const QString key = "希両_V1.000";
+const QString key = "希両_V1.002";
 
 int main(int argc, char *argv[])
 {

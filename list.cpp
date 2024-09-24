@@ -4,7 +4,7 @@
 #define FFmpegUrl QDir::currentPath() + "/ffmpeg.exe"
 
 list::list(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent, Qt::WindowStaysOnTopHint)
     , ui(new Ui::list)
 {
     ui->setupUi(this);
@@ -86,21 +86,6 @@ void list::set_background_pic(QImage *img)
     ui->pixmapshow->update();
 }
 
-//设置字体
-void list::set_font_type(QString f)
-{
-    ui->widget_show->setStyleSheet(
-        "*{font:12pt \""+f
-        +"\";border:0px;color: rgb(255, 255, 255);background-color: transparent;}"
-          "*:hover{color: rgb(0, 170, 255);}"
-          "#widget_show{background-color: rgba(0,0,0,128);}"
-          "QLabel{border-bottom:1px solid rgb(198, 198, 198);min-height:40px;}"
-          "QLineEdit{border-bottom:1px solid rgb(198, 198, 198);min-height:40px;}"
-          "QComboBox{min-height:40px;}"
-          "QComboBox QAbstractItemView {background-color: rgb(0, 0, 0);}"
-          "QMenu{background-color: rgba(0,0,0,128);}");
-}
-
 //写数据
 void list::writer_data()
 {
@@ -141,7 +126,10 @@ void list::writer_data()
             QJsonObject all;
             for(int i=0;i<tables.size();i++)
             {
-                all.insert(tables[i]->name,tables[i]->jsonObject());
+                if(tables[i]->name != "所有歌曲")
+                {
+                    all.insert(tables[i]->name,tables[i]->jsonObject());
+                }
             }
             QJsonDocument doc;
             doc.setObject(all);
@@ -173,6 +161,7 @@ void list::read_data()
         }
     }
 
+    build_all();
     //列表信息
     {
         QFile file(QDir::currentPath() + "/data/tables.json");
@@ -258,6 +247,23 @@ void list::mouseMoveEvent(QMouseEvent* event)
     QWidget::mouseMoveEvent(event);
 }
 
+//重载数据
+void list::reLoad_musicCore()
+{
+    writer_data();
+    qDeleteAll(cores.begin(),cores.end());
+    cores.clear();
+    qDeleteAll(musics.begin(),musics.end());
+    musics.clear();
+    qDeleteAll(tables.begin(),tables.end());
+    tables.clear();
+
+    for(int i=0;i<dirs.size();i++)
+    {
+        load_musicCore(dirs[i]);
+    }
+    read_data();
+}
 //加载音乐核心
 void list::load_musicCore(QString dir)
 {
@@ -313,6 +319,20 @@ void list::add_table()
     ui->stackedWidget_tables->addWidget(one);
 
     connect(one,&table::playMusic,this,&list::play_music);
+}
+//删除播放列表
+void list::delete_table(int aim)
+{
+    QList <table*> list;
+    delete tables[aim];
+    for(int i=0;i<tables.size();i++)
+    {
+        if(i != aim)
+        {
+            list.append(tables[i]);
+        }
+    }
+    tables = list;
 }
 
 //上一首，下一首
@@ -377,27 +397,35 @@ void list::play_music(int tableNumber,int musicNumber)
 
 void list::on_pushButton_high_clicked()
 {
-    QMenu menu(this);
+    Menu* menu = new Menu;
 
-    QAction* insert = new QAction("把图片内嵌到文件当中");
-    menu.addAction(insert);
-    connect(insert,&QAction::triggered,this,&list::jpg_insert_fiel);
+    QPushButton* reLoad = new QPushButton("重载资源");
+    menu->addPushButton(reLoad);
+    connect(reLoad ,&QPushButton::clicked,this,&list::reLoad_musicCore);
 
-    QAction* style1 = new QAction("作者 - 标题");
-    menu.addAction(style1);
-    connect(style1,&QAction::triggered,this,[this]()
+    menu->addSpacer();
+
+    QPushButton* insert = new QPushButton("把图片内嵌到文件当中");
+    menu->addPushButton(insert);
+    connect(insert,&QPushButton::clicked,this,&list::jpg_insert_fiel);
+
+    menu->addSpacer();
+
+    QPushButton* style1 = new QPushButton("作者 - 标题");
+    menu->addPushButton(style1);
+    connect(style1,&QPushButton::clicked,this,[this]()
             {
                 set_music_style(1);
             });
 
-    QAction* style2 = new QAction("标题 - 作者");
-    menu.addAction(style2);
-    connect(style2,&QAction::triggered,this,[this]()
+    QPushButton* style2 = new QPushButton("标题 - 作者");
+    menu->addPushButton(style2);
+    connect(style2,&QPushButton::clicked,this,[this]()
             {
                 set_music_style(2);
             });
 
-    menu.exec(QCursor::pos());
+    menu->exec(QCursor::pos());
 }
 
 //将图片内嵌到文件中
@@ -561,34 +589,35 @@ music* list::buildMusic(int core)
 
     connect(one,&music::moveToTable,this,[=](int musicNumber)
             {
-                QMenu menu(this);
+               Menu* menu = new Menu;
 
                 for(int i=0;i<tables.size();i++)
                 {
-                    QAction* act = new QAction(tables[i]->name);
-                    menu.addAction(act);
-                    connect(act,&QAction::triggered,this,[=]()
+                    QPushButton* act = new QPushButton(tables[i]->name);
+                    menu->addPushButton(act);
+                    connect(act,&QPushButton::clicked,this,[=]()
                             {
                                 if(tables[i]->type == "user")
                                 {table_add_music(i,musicNumber);}
                             });
                 }
-                menu.exec(QCursor::pos());
+                menu->exec(QCursor::pos());
             });
+    connect(one,&music::editLrc,my_lrcEdit,&lrcEdit::read_lrc);
 
     return one;
 }
 
 void list::on_pushButton_tables_clicked()
 {
-    QMenu menu(this);
+   Menu* menu = new Menu;
     for(int i=0;i<tables.size();i++)
     {
-        QAction* table = new QAction(tables[i]->name);
-        menu.addAction(table);
-        connect(table,&QAction::triggered,this,[=](){turn_table(i);});
+        QPushButton* table = new QPushButton(tables[i]->name);
+        menu->addPushButton(table);
+        connect(table,&QPushButton::clicked,this,[=](){turn_table(i);});
     }
-    menu.exec(QCursor::pos());
+    menu->exec(QCursor::pos());
 }
 
 //切换列表
@@ -599,21 +628,46 @@ void list::turn_table(int aim)
     showTable = aim;
 }
 
+//所有歌曲
+void list::build_all()
+{
+    add_table();
+    tables[tables.size()-1]->name = "所有歌曲";
+    for(int i=0;i<cores.size();i++)
+    {
+        table_add_music(tables.size()-1,i);
+    }
+}
+
+//编辑当前列表
 void list::edit_table()
 {
-    QMenu* menu = new QMenu(this);
+    Menu* menu = new Menu;
 
-    QAction* act = new QAction("编辑");
-    menu->addAction(act);
-    connect(act,&QAction::triggered,this,[=]()
+    QPushButton* act = new QPushButton("修改列表名字");
+    menu->addPushButton(act);
+    connect(act,&QPushButton::clicked,this,[=]()
             {
                 ui->pushButton_tables->setText(tables[showTable]->name);
                 tables[showTable]->editShow();
             });
 
-    QAction* add = new QAction("新建列表");
-    menu->addAction(add);
-    connect(add,&QAction::triggered,this,&list::add_table);
+    menu->addSpacer();
+
+    QPushButton* add = new QPushButton("新建列表");
+    menu->addPushButton(add);
+    connect(add,&QPushButton::clicked,this,&list::add_table);
+
+    QPushButton* remove = new QPushButton("删除列表");
+    menu->addPushButton(remove);
+    connect(remove,&QPushButton::clicked,this,[=]()
+            {
+                delete_table(showTable);
+                if(tables.size()>1)
+                {
+                    turn_table(tables.size()-1);
+                }
+            });
 
     menu->exec(QCursor::pos());
 }

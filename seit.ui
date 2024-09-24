@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>477</width>
+    <width>508</width>
     <height>805</height>
    </rect>
   </property>
@@ -121,7 +121,7 @@ background-color: rgba(0,0,0,128);
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>441</width>
+                 <width>472</width>
                  <height>769</height>
                 </rect>
                </property>
@@ -144,53 +144,55 @@ background-color: rgba(0,0,0,128);
                 <item>
                  <widget class="QWidget" name="widget_source" native="true">
                   <layout class="QGridLayout" name="gridLayout">
+                   <property name="bottomMargin">
+                    <number>20</number>
+                   </property>
                    <property name="horizontalSpacing">
                     <number>10</number>
                    </property>
                    <property name="verticalSpacing">
                     <number>20</number>
                    </property>
-                   <item row="8" column="1">
-                    <widget class="QPushButton" name="pushButton_sizeUp">
-                     <property name="text">
-                      <string>&lt;</string>
-                     </property>
+                   <item row="11" column="3" colspan="2">
+                    <widget class="QWidget" name="widget_2" native="true">
+                     <layout class="QHBoxLayout" name="horizontalLayout">
+                      <item>
+                       <widget class="QPushButton" name="pushButton_sizeUp">
+                        <property name="styleSheet">
+                         <string notr="true">image: url(:/move.png);</string>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_sizeDown">
+                        <property name="styleSheet">
+                         <string notr="true">image: url(:/min.png);</string>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
                     </widget>
                    </item>
-                   <item row="0" column="1" colspan="2">
-                    <widget class="QComboBox" name="comboBox_all_url"/>
-                   </item>
-                   <item row="2" column="2">
-                    <widget class="QPushButton" name="pushButton_add_dir">
-                     <property name="text">
-                      <string>新加地址</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="8" column="2">
-                    <widget class="QPushButton" name="pushButton_sizeDown">
-                     <property name="text">
-                      <string>&gt;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="6" column="1" colspan="2">
-                    <widget class="QFontComboBox" name="fontComboBox_lrc"/>
-                   </item>
-                   <item row="3" column="1" colspan="2">
-                    <widget class="QFontComboBox" name="fontComboBox_seit"/>
-                   </item>
-                   <item row="3" column="0">
-                    <widget class="QLabel" name="label_4">
-                     <property name="text">
-                      <string>字体</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="0">
+                   <item row="7" column="0">
                     <widget class="QLabel" name="label_3">
                      <property name="text">
                       <string>桌面歌词</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="3">
+                    <widget class="QPushButton" name="pushButton_lrc_sizeAdd">
+                     <property name="styleSheet">
+                      <string notr="true">image: url(:/move.png);</string>
+                     </property>
+                     <property name="text">
+                      <string/>
                      </property>
                     </widget>
                    </item>
@@ -201,24 +203,96 @@ background-color: rgba(0,0,0,128);
                      </property>
                     </widget>
                    </item>
-                   <item row="2" column="1">
+                   <item row="3" column="1" colspan="2">
+                    <widget class="QLabel" name="label_8">
+                     <property name="text">
+                      <string>滚动歌词字体大小</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1" colspan="3">
                     <widget class="QPushButton" name="pushButton_delete_dir">
                      <property name="text">
                       <string>删除地址</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="4" column="1">
+                   <item row="12" column="1" colspan="2">
+                    <widget class="QCheckBox" name="checkBox_downLrc">
+                     <property name="text">
+                      <string>下载歌词（网易云）</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1" colspan="4">
+                    <widget class="QComboBox" name="comboBox_all_url"/>
+                   </item>
+                   <item row="11" column="2">
+                    <widget class="QLabel" name="label_lrcShow_fontSize">
+                     <property name="text">
+                      <string>20</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="3" colspan="2">
+                    <widget class="QPushButton" name="pushButton_downLrc">
+                     <property name="text">
+                      <string>下一句歌词颜色</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="9" column="1" colspan="4">
+                    <widget class="QFontComboBox" name="fontComboBox_lrc"/>
+                   </item>
+                   <item row="11" column="1">
+                    <widget class="QLabel" name="label_2">
+                     <property name="text">
+                      <string>字体大小：</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="4">
+                    <widget class="QPushButton" name="pushButton_add_dir">
+                     <property name="text">
+                      <string>新加地址</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="7" column="1" colspan="2">
                     <widget class="QPushButton" name="pushButton_nowLrc">
                      <property name="text">
                       <string>当前歌词颜色</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="4" column="2">
-                    <widget class="QPushButton" name="pushButton_downLrc">
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="label_4">
                      <property name="text">
-                      <string>下一句歌词颜色</string>
+                      <string>主界面设置</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="4">
+                    <widget class="QPushButton" name="pushButton_lrc_sizeDecrease">
+                     <property name="styleSheet">
+                      <string notr="true">image: url(:/min.png);</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="12" column="0">
+                    <widget class="QLabel" name="label_6">
+                     <property name="text">
+                      <string>在线服务</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="12" column="3" colspan="2">
+                    <widget class="QCheckBox" name="checkBox_downCover">
+                     <property name="text">
+                      <string>下载封面（网易云）</string>
                      </property>
                     </widget>
                    </item>

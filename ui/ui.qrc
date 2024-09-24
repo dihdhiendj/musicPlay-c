@@ -12,5 +12,14 @@
         <file>right.png</file>
         <file>dic.png</file>
         <file>alone.png</file>
+        <file>exe.png</file>
+        <file>max.png</file>
+        <file>min.png</file>
+        <file>move.png</file>
+        <file>yes_red.png</file>
+        <file>delete_red.png</file>
+        <file>add_Red.png</file>
+        <file>down_y.png</file>
+        <file>main.png</file>
     </qresource>
 </RCC>

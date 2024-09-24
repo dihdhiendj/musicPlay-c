@@ -40,44 +40,27 @@ public:
     {
         if (list->objectName().isEmpty())
             list->setObjectName("list");
-        list->resize(448, 581);
-        list->setStyleSheet(QString::fromUtf8("\n"
+        list->resize(406, 652);
+        list->setStyleSheet(QString::fromUtf8("#widget{\n"
+"background-color: rgb(0, 0, 0);\n"
+"border-radius:15px;\n"
+"}\n"
 "*:hover{\n"
 "color: rgb(0, 170, 255);\n"
 "}\n"
-"#widget{\n"
-"border-radius:15px;\n"
-"background-color: rgb(0, 0, 0);\n"
-"}\n"
-"*{\n"
-"font:100 12pt \"\345\215\216\346\226\207\344\273\277\345\256\213\";\n"
-"color: rgb(255, 255, 255);\n"
-"background-color: transparent;\n"
-"border:0px;\n"
-"}\n"
-"QLabel{\n"
-"border-top:1px solid rgb(198, 198, 198);\n"
-"border-bottom:1px solid rgb(198, 198, 198);\n"
-"min-height:40px;\n"
-"}\n"
-"QLineEdit\n"
-"{\n"
-"border-bottom:1px solid rgb(198, 198, 198);\n"
-"min-height:40px;\n"
-"}\n"
-"QComboBox{\n"
-"min-height:40px;\n"
-"}\n"
-"QComboBox QAbstractItemView \n"
-"{\n"
-"background-color: rgb(0, 0, 0);\n"
+"#widget_show{\n"
+"background-color: rgba(0,0,0,128); \n"
 "}\n"
 "QMenu\n"
 "{\n"
 "background-color: rgba(0,0,0,128);\n"
 "}\n"
-"\n"
-""));
+"*{\n"
+"font: 12pt \"\345\215\216\346\226\207\344\273\277\345\256\213\";\n"
+"border:none;\n"
+"color: rgb(255, 255, 255);\n"
+"background-color: transparent;\n"
+"}"));
         verticalLayout_6 = new QVBoxLayout(list);
         verticalLayout_6->setSpacing(0);
         verticalLayout_6->setObjectName("verticalLayout_6");

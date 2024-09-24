@@ -127,6 +127,10 @@
         "love_value": 0,
         "play_number": 0
     },
+    "HITA - 赤伶": {
+        "love_value": 0,
+        "play_number": 0
+    },
     "HOYO-MiX - Da Capo": {
         "love_value": 0,
         "play_number": 0
@@ -359,6 +363,10 @@
         "love_value": 0,
         "play_number": 0
     },
+    "不问别离-指尖笑": {
+        "love_value": 0,
+        "play_number": 1
+    },
     "乐正绫,洛天依,COP - 南北组-世末歌者": {
         "love_value": 0,
         "play_number": 0
@@ -391,11 +399,19 @@
         "love_value": 0,
         "play_number": 0
     },
+    "人间惊鸿客-叶里": {
+        "love_value": 0,
+        "play_number": 0
+    },
     "优十_先生 (ゆう十) - ヤキモチ": {
         "love_value": 0,
         "play_number": 0
     },
     "伦桑 - 烟雨行舟": {
+        "love_value": 0,
+        "play_number": 0
+    },
+    "伪善者-金渔": {
         "love_value": 0,
         "play_number": 0
     },
@@ -413,11 +429,11 @@
     },
     "关大洲 - 九州同": {
         "love_value": 0,
-        "play_number": 1
+        "play_number": 0
     },
     "关大洲 - 少年游": {
         "love_value": 0,
-        "play_number": 7
+        "play_number": 0
     },
     "凤凰传奇 - 奢香夫人": {
         "love_value": 0,
@@ -469,7 +485,7 @@
     },
     "华晨宇 - 好想爱这个世界啊": {
         "love_value": 0,
-        "play_number": 1
+        "play_number": 0
     },
     "华语群星 - 手牵手": {
         "love_value": 0,
@@ -735,6 +751,10 @@
         "love_value": 0,
         "play_number": 0
     },
+    "周深 - 若思念便思念": {
+        "love_value": 0,
+        "play_number": 0
+    },
     "周深 - 过尽千帆": {
         "love_value": 0,
         "play_number": 0
@@ -747,7 +767,19 @@
         "love_value": 0,
         "play_number": 0
     },
+    "和你一样-李宇春": {
+        "love_value": 0,
+        "play_number": 0
+    },
+    "喜剧之王-李荣浩": {
+        "love_value": 0,
+        "play_number": 0
+    },
     "国风堂;三无MarBlue - 锦中客": {
+        "love_value": 0,
+        "play_number": 0
+    },
+    "圆-AGA": {
         "love_value": 0,
         "play_number": 0
     },
@@ -771,6 +803,10 @@
         "love_value": 0,
         "play_number": 0
     },
+    "大天蓬-李袁杰": {
+        "love_value": 0,
+        "play_number": 0
+    },
     "大柯 - 勾指起誓": {
         "love_value": 0,
         "play_number": 0
@@ -780,6 +816,10 @@
         "play_number": 0
     },
     "奇然,沈谧仁 - 琵琶行": {
+        "love_value": 0,
+        "play_number": 0
+    },
+    "她说-林俊杰": {
         "love_value": 0,
         "play_number": 0
     },
@@ -843,13 +883,17 @@
         "love_value": 0,
         "play_number": 0
     },
+    "带我去找夜生活-告五人": {
+        "love_value": 0,
+        "play_number": 0
+    },
     "年少有为 - 李荣浩": {
         "love_value": 0,
         "play_number": 0
     },
     "张信哲 - 信仰": {
         "love_value": 0,
-        "play_number": 1
+        "play_number": 0
     },
     "张信哲 - 爱如潮水": {
         "love_value": 0,
@@ -869,7 +913,7 @@
     },
     "张惠妹 - 血腥爱情故事": {
         "love_value": 0,
-        "play_number": 16
+        "play_number": 0
     },
     "张杰 - 剑心": {
         "love_value": 0,
@@ -912,6 +956,14 @@
         "play_number": 0
     },
     "徐良;孙羽幽 - 七秒钟的记忆": {
+        "love_value": 0,
+        "play_number": 0
+    },
+    "怪咖-薛之谦": {
+        "love_value": 0,
+        "play_number": 0
+    },
+    "我的天空-南征北战NZBZ": {
         "love_value": 0,
         "play_number": 0
     },
@@ -1047,6 +1099,10 @@
         "love_value": 0,
         "play_number": 0
     },
+    "林俊杰 - 她说": {
+        "love_value": 0,
+        "play_number": 0
+    },
     "林俊杰 - 愿与愁": {
         "love_value": 0,
         "play_number": 0
@@ -1091,6 +1147,10 @@
         "love_value": 0,
         "play_number": 0
     },
+    "段奥娟 - 陪我长大": {
+        "love_value": 0,
+        "play_number": 0
+    },
     "毛不易 - 一程山路": {
         "love_value": 0,
         "play_number": 0
@@ -1109,7 +1169,7 @@
     },
     "毛不易 - 呓语": {
         "love_value": 0,
-        "play_number": 2
+        "play_number": 0
     },
     "毛不易 - 无名的人": {
         "love_value": 0,
@@ -1172,6 +1232,10 @@
         "play_number": 0
     },
     "瀬戸麻沙美,东山奈央 (とうやま なお),种崎敦美 (たねざき あつみ),内田真礼 (うちだ まあや),久保ユリカ,水瀬いのり (水濑祈) - 不可思議のカルテ (movie ver.)": {
+        "love_value": 0,
+        "play_number": 0
+    },
+    "父亲-筷子兄弟": {
         "love_value": 0,
         "play_number": 0
     },
@@ -1243,9 +1307,17 @@
         "love_value": 0,
         "play_number": 0
     },
+    "篝火旁-吕大叶.Broma Three": {
+        "love_value": 0,
+        "play_number": 0
+    },
     "糯米Nomi - 调查中": {
         "love_value": 0,
         "play_number": 0
+    },
+    "红昭愿-音阙诗听": {
+        "love_value": 0,
+        "play_number": 1
     },
     "纳西妲相关收集站 - 【纳西妲生日会】万人大合唱《我不曾忘记》": {
         "love_value": 0,
@@ -1261,7 +1333,11 @@
     },
     "缝纫机乐队 - 都选C": {
         "love_value": 0,
-        "play_number": 2
+        "play_number": 0
+    },
+    "耍把戏-张东尼": {
+        "love_value": 0,
+        "play_number": 1
     },
     "胡夏 - 那些年": {
         "love_value": 0,
@@ -1401,13 +1477,17 @@
     },
     "许嵩 - 雨幕": {
         "love_value": 0,
-        "play_number": 0
+        "play_number": 5
     },
     "许巍 - 生活不止眼前的苟且": {
         "love_value": 0,
         "play_number": 0
     },
     "许慧欣 - 七月七日晴": {
+        "love_value": 0,
+        "play_number": 0
+    },
+    "谁家-池鱼": {
         "love_value": 0,
         "play_number": 0
     },
@@ -1426,6 +1506,10 @@
     "起风了 - 买辣椒也用券": {
         "love_value": 0,
         "play_number": 0
+    },
+    "身骑白马-徐佳莹": {
+        "love_value": 0,
+        "play_number": 1
     },
     "逃跑计划 - 一万次悲伤": {
         "love_value": 0,
@@ -1448,6 +1532,10 @@
         "play_number": 0
     },
     "酸欠少女さユり (Sayuri) - 光と闇 (光与暗) (弾き語りver.)": {
+        "love_value": 0,
+        "play_number": 0
+    },
+    "野子-苏运莹": {
         "love_value": 0,
         "play_number": 0
     },
@@ -1571,6 +1659,10 @@
         "love_value": 0,
         "play_number": 0
     },
+    "陪我长大-段奥娟": {
+        "love_value": 0,
+        "play_number": 0
+    },
     "隔壁老樊 - 多想在平庸的生活拥抱你 (Live)": {
         "love_value": 0,
         "play_number": 0
@@ -1669,7 +1761,7 @@
     },
     "黄霄雲 - 星辰大海": {
         "love_value": 0,
-        "play_number": 1
+        "play_number": 0
     },
     "黄龄,HOYO-MiX - TruE": {
         "love_value": 0,

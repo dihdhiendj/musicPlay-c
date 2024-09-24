@@ -1,8 +1,8 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include <hard.h>
 #include <addlib.h>
+#include <lrcedit.h>
 #include <table.h>
 
 namespace Ui {
@@ -22,6 +22,8 @@ public:
     int playMusicNumber = 0, playTableNumber = 0;
     //展示列表
     int showTable = 0;
+    //歌词编辑界面
+    lrcEdit* my_lrcEdit = new lrcEdit;
 
     QPoint my_pos;
 
@@ -36,14 +38,15 @@ public:
     //歌曲核心
     QList <musicCore*> cores;
     QList <music*> musics;
+    QStringList dirs;
 
+    //重载数据
+    void reLoad_musicCore();
     //加载音乐核心
     void load_musicCore(QString dir);
 
     //设置背景
     void set_background_pic(QImage *img);
-    //设置字体
-    void set_font_type(QString f);
 
     //鼠标按下
     void mousePressEvent(QMouseEvent* event)override;
@@ -79,10 +82,15 @@ public:
 
     //新建列表
     void add_table();
+    //删除播放列表
+    void delete_table(int aim);
     //切换列表
     void turn_table(int aim);
 
     void edit_table();
+
+    //所有歌曲
+    void build_all();
 
 private:
     Ui::list *ui;

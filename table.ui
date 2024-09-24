@@ -14,8 +14,22 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QPushButton{
-min-height:50px;
+   <string notr="true">
+QComboBox QAbstractItemView {
+	background-color: rgb(0, 0, 0);
+}
+#widget_search{
+border:1px solid white;
+}
+*:hover{
+color: rgb(0, 170, 255);
+}
+*{
+font: 12pt &quot;华文仿宋&quot;;
+border:none;
+color: rgb(255, 255, 255);
+background-color: transparent;
+min-height:30px;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -35,7 +49,7 @@ min-height:50px;
     <number>9</number>
    </property>
    <item>
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="widget_main" native="true">
      <layout class="QGridLayout" name="gridLayout">
       <property name="leftMargin">
        <number>0</number>
@@ -49,14 +63,97 @@ min-height:50px;
       <property name="spacing">
        <number>0</number>
       </property>
-      <item row="1" column="1" colspan="2">
-       <widget class="QPushButton" name="pushButton_search">
-        <property name="text">
-         <string>搜索</string>
+      <item row="2" column="0" colspan="3">
+       <widget class="QWidget" name="widget_edit" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
         </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="1" column="3">
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="0" colspan="4">
+          <widget class="QLineEdit" name="lineEdit_name"/>
+         </item>
+         <item row="1" column="0">
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="pushButton_yes">
+           <property name="text">
+            <string>确定</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="pushButton_no">
+           <property name="text">
+            <string>取消</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
-      <item row="0" column="0">
+      <item row="1" column="0" colspan="3">
+       <widget class="QWidget" name="widget_search" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPushButton" name="pushButton_search">
+           <property name="text">
+            <string>搜索：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QComboBox" name="comboBox_forward">
+        <property name="styleSheet">
+         <string notr="true">*{
+min-width:100px;
+}</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>降序</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>升序</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
        <widget class="QComboBox" name="comboBox_key">
         <item>
          <property name="text">
@@ -90,76 +187,6 @@ min-height:50px;
         </item>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLineEdit" name="lineEdit"/>
-      </item>
-      <item row="0" column="1" colspan="2">
-       <widget class="QComboBox" name="comboBox_forward">
-        <property name="styleSheet">
-         <string notr="true">*{
-min-width:100px;
-}</string>
-        </property>
-        <item>
-         <property name="text">
-          <string>降序</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>升序</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="3">
-       <widget class="QWidget" name="widget_edit" native="true">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>100</height>
-         </size>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="1" column="0">
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="1" column="1">
-          <widget class="QPushButton" name="pushButton_yes">
-           <property name="text">
-            <string>确定</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="0" column="0" colspan="3">
-          <widget class="QLineEdit" name="lineEdit_name"/>
-         </item>
-        </layout>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
@@ -179,14 +206,14 @@ min-width:100px;
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>338</width>
-        <height>264</height>
+        <width>340</width>
+        <height>286</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>0</height>
+        <height>30</height>
        </size>
       </property>
       <property name="maximumSize">
@@ -197,7 +224,7 @@ min-width:100px;
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_music">
        <property name="spacing">
-        <number>6</number>
+        <number>10</number>
        </property>
        <property name="leftMargin">
         <number>0</number>

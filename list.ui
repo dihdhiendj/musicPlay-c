@@ -6,51 +6,34 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>448</width>
-    <height>581</height>
+    <width>406</width>
+    <height>652</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>播放列表</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
+   <string notr="true">#widget{
+background-color: rgb(0, 0, 0);
+border-radius:15px;
+}
 *:hover{
 color: rgb(0, 170, 255);
 }
-#widget{
-border-radius:15px;
-background-color: rgb(0, 0, 0);
-}
-*{
-font:100 12pt &quot;华文仿宋&quot;;
-color: rgb(255, 255, 255);
-background-color: transparent;
-border:0px;
-}
-QLabel{
-border-top:1px solid rgb(198, 198, 198);
-border-bottom:1px solid rgb(198, 198, 198);
-min-height:40px;
-}
-QLineEdit
-{
-border-bottom:1px solid rgb(198, 198, 198);
-min-height:40px;
-}
-QComboBox{
-min-height:40px;
-}
-QComboBox QAbstractItemView 
-{
-background-color: rgb(0, 0, 0);
+#widget_show{
+background-color: rgba(0,0,0,128); 
 }
 QMenu
 {
 background-color: rgba(0,0,0,128);
 }
-
-</string>
+*{
+font: 12pt &quot;华文仿宋&quot;;
+border:none;
+color: rgb(255, 255, 255);
+background-color: transparent;
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_6">
    <property name="spacing">

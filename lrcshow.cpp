@@ -1,40 +1,141 @@
 #include "lrcshow.h"
 #include "ui_lrcshow.h"
 
+lrc_line::lrc_line(QWidget *parent)
+    :QLabel(parent)
+{
+    this->installEventFilter(this);
+    this->setWordWrap(1);
+    this->setObjectName("lrc");
+    this->setAlignment(Qt::AlignCenter);
+    this->setStyleSheet("*{min-height:50px;}");
+    back();
+}
+//重写事件过滤器
+bool lrc_line::eventFilter(QObject *target, QEvent *event)
+{
+    if(isUse)
+    {
+        if(target == this && event->type() == QEvent::Leave)
+        {
+            finish_color = Qt::white;
+            font.setPointSize(font.pointSize()-2);
+            return true;
+        }
+        else if(target == this && event->type() == QEvent::Enter)
+        {
+            finish_color = next_color;
+            font.setPointSize(font.pointSize()+2);
+            return true;
+        }
+    }
+    return QLabel::eventFilter(target,event);
+}
+
+//重写鼠标事件
+void lrc_line::mousePressEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton && isUse)
+    {
+        emit turn_time(start);
+    }
+    else
+    {
+        event->ignore();
+    }
+}
+
+//重写绘图事件
+void lrc_line::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);   //防锯齿
+
+    QPainterPath path;
+    painter.setFont(font);
+
+    QFontMetrics fm(font);
+    int textWidth = fm.horizontalAdvance(text());
+    this->setMinimumWidth(textWidth);
+    int textHeight = fm.height();
+    this->setMinimumHeight(textHeight+10);
+
+    //起始百分比
+    float openWidth = (width()/2-textWidth/2)/float(width());
+    //长度百分比
+    float endWidth = (openWidth + textWidth)/float(width());
+
+    path.addText(width()/2-textWidth/2 , height()/2+textHeight/2 , font , this->text());
+    QLinearGradient linearGridient(0,height(),width(),height());
+    if(isplay)
+    {
+        auto play = (stop - 0.0001)*endWidth + openWidth > 0
+                        ?(stop - 0.0001)*endWidth + openWidth : 0;
+        play = play < 1?play : 1;
+        auto end = stop*endWidth + openWidth < 1
+                       ?stop*endWidth + openWidth : 1;
+        end = end > 0?end:0;
+
+        linearGridient.setColorAt(play , play_color);
+        linearGridient.setColorAt(end , next_color);
+        painter.setBrush(linearGridient);
+        painter.setBrush(linearGridient);
+    }
+    else
+    {
+        linearGridient.setColorAt(0,finish_color);;
+        painter.setBrush(linearGridient);
+    }
+    painter.setPen(Qt::NoPen);
+    painter.drawPath(path);
+}
+
+//复制播放数据
+void lrc_line::copy(lrc_line* one)
+{
+    last = one->last;
+    start = one->start;
+}
+
+//设置播放样式
+void lrc_line::set_runStyle(QColor play,QColor next ,QFont f,QColor finish)
+{
+    play_color = play;
+    next_color = next;
+    font = f;
+    finish_color = finish;
+}
+//正在播放
+void lrc_line::playing(qint64 time)
+{
+    stop = (time-start)/last;
+    isplay = true;
+    update();
+}
+//恢复
+void lrc_line::back()
+{
+    isplay = false;
+    update();
+}
+
+
 LrcShow::LrcShow(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::LrcShow)
 {
     ui->setupUi(this);
+    this->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum);
     setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     setAutoFillBackground(false);//设置自动填充
     setAttribute(Qt::WA_TranslucentBackground, true);//设置窗口背景透明
     repaint();
 
+    //调整策略
     {
-        ui->pushButton_stop->setIcon(QIcon(":/stop.png"));
-        ui->pushButton_unlock->setIcon(QIcon(":/lock.png"));
-        ui->pushButton_up->setIcon(QIcon(":/left.png"));
-        ui->pushButton_down->setIcon(QIcon(":/right.png"));
-        ui->pushButton_play->setIcon(QIcon(":/play.png"));
-        ui->pushButton_lock->setIcon(QIcon(":/lock.png"));
-        ui->pushButton_seit->setIcon(QIcon(":/seit.png"));
-        ui->pushButton_alone->setIcon(QIcon(":/alone.png"));
-        ui->pushButton_dic->setIcon(QIcon(":/dic.png"));
-        ui->pushButton_hide->setIcon(QIcon(":/close.png"));
-
-        ui->pushButton_stop->setText("");
-        ui->pushButton_unlock->setText("");
-        ui->pushButton_up->setText("");
-        ui->pushButton_down->setText("");
-        ui->pushButton_play->setText("");
-        ui->pushButton_lock->setText("");
-        ui->pushButton_seit->setText("");
-        ui->pushButton_alone->setText("");
-        ui->pushButton_dic->setText("");
-        ui->pushButton_hide->setText("");
+        ui->labelNow->isUse = false;
+        ui->labelDown->isUse = false;
     }
-
     this->installEventFilter(this);
     ui->widget_tool->hide();
     ui->pushButton_unlock->hide();
@@ -70,22 +171,27 @@ bool LrcShow::eventFilter(QObject *target, QEvent *event)
 }
 
 //设置歌词样式
-void LrcShow::set_lrcStyle(QString now,QString down)
+void LrcShow::set_lrcStyle(QColor play,QColor next ,QFont font)
 {
-    ui->labelNow->setStyleSheet(now);
-    ui->labelDown->setStyleSheet(down);
-    ui->labelNow_2->setStyleSheet(now);
-    ui->labelDown_2->setStyleSheet(down);
+    font.setBold(1);
+    ui->labelDown->set_runStyle(play,next,font,next);
+    ui->labelNow->set_runStyle(play,next,font,next);
 }
-void LrcShow::setLrc(QString now,QString down)
+
+void LrcShow::setLrc(QString now,QString down,lrc_line* one)
 {
+    ui->labelNow->copy(one);
     ui->labelNow->setText(now);
     ui->labelDown->setText(down);
-    ui->labelNow_2->setText(now.replace("","\n"));
-    ui->labelDown_2->setText(down.replace("","\n"));
 
-    QPoint aim(center.x()-width()/2,center.y()-height()/2);
-    move(aim);
+    if(this->isVisible())
+    {
+        int max = ui->labelNow->minimumWidth()>ui->labelDown->minimumWidth()
+                      ?ui->labelNow->minimumWidth():ui->labelDown->minimumWidth();
+        this->setMaximumWidth(max+50);
+
+        this->move(QPoint(center.x()-width()/2,center.y()-height()/2));
+    }
 }
 
 //鼠标按下
@@ -104,10 +210,8 @@ void LrcShow::mouseMoveEvent(QMouseEvent* event)
     {
         move(QCursor::pos() - my_pos);
         event->accept();
-
         center = this->geometry().center();
     }
-
     QWidget::mouseMoveEvent(event);
 }
 
@@ -163,36 +267,25 @@ void LrcShow::on_pushButton_seit_clicked()
     emit seitShow();
 }
 
-void LrcShow::on_pushButton_dic_clicked()
-{
-    if(dic)
-    {
-        dic = false;
-        ui->widget_level->hide();
-        ui->widget_erect->show();
-    }
-    else
-    {
-        dic = true;
-        ui->widget_level->show();
-        ui->widget_erect->hide();
-    }
-}
-
 void LrcShow::on_pushButton_alone_clicked()
 {
     if(alone)
     {
         alone = false;
         ui->labelDown->hide();
-        ui->labelDown_2->hide();
     }
     else
     {
         alone = true;
         ui->labelDown->show();
-        ui->labelDown_2->show();
     }
+}
+
+//更新播放进度
+void LrcShow::upDate_palyValue(qint64 time)
+{
+    ui->labelNow->playing(time);
+    ui->labelDown->back();
 }
 
 //写数据
@@ -201,7 +294,6 @@ void LrcShow::writer_data()
     QSettings *ini = new QSettings(QDir::currentPath() + "/data/lrc.ini", QSettings::IniFormat);
     ini->beginGroup("lrc");
 
-    ini->setValue("dic",dic);
     ini->setValue("alone",alone);
     ini->setValue("lock",lock);
 
@@ -214,10 +306,6 @@ void LrcShow::read_data()
 {
     QSettings *ini = new QSettings(QDir::currentPath() + "/data/lrc.ini", QSettings::IniFormat);
     ini->beginGroup("lrc");
-
-    dic = ini->value("dic").toBool();
-    on_pushButton_dic_clicked();
-    on_pushButton_dic_clicked();
 
     alone = ini->value("alone").toBool();
     on_pushButton_alone_clicked();
